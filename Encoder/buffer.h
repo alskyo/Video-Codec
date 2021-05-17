@@ -17,18 +17,18 @@ typedef struct _Image_information
 	int acqp;
 	int period;
 
-	int width;			 // ¿øº»/º¹¿ø ¿µ»óÀÇ °¡·Î Å©±â
-	int height;			 // ¿øº»/º¹¿ø ¿µ»óÀÇ ¼¼·Î Å©±â
-	int CbCr_width;		 // Å©·Î¸¶ °¡·Î
-	int CbCr_height;	 // Å©·Î¸¶ ¼¼·Î
-	int Pad_W;			 // ÆĞµù °¡·Î
-	int Pad_H;			 // ÆĞµù ¼¼·Î
-	int CbCr_Pad_W;		 // Å©·Î¸¶ ÆĞµù °¡·Î
-	int CbCr_Pad_H;		 // Å©·Î¸¶ ÆĞµù ¼¼·Î
-	int Blk_W;			 // ºí·ÏÀÇ °¡·Î Å©±â
-	int Blk_H;			 // ºí·ÏÀÇ ¼¼·Î Å©±â
-	int CbCr_Blk_W;		 // Å©·Î¸¶ ºí·ÏÀÇ °¡·Î Å©±â
-	int CbCr_Blk_H;		 // Å©·Î¸¶ ºí·ÏÀÇ ¼¼·Î Å©±â
+	int width;			 // ì›ë³¸/ë³µì› ì˜ìƒì˜ ê°€ë¡œ í¬ê¸°
+	int height;			 // ì›ë³¸/ë³µì› ì˜ìƒì˜ ì„¸ë¡œ í¬ê¸°
+	int CbCr_width;		 // í¬ë¡œë§ˆ ê°€ë¡œ
+	int CbCr_height;	 // í¬ë¡œë§ˆ ì„¸ë¡œ
+	int Pad_W;			 // íŒ¨ë”© ê°€ë¡œ
+	int Pad_H;			 // íŒ¨ë”© ì„¸ë¡œ
+	int CbCr_Pad_W;		 // í¬ë¡œë§ˆ íŒ¨ë”© ê°€ë¡œ
+	int CbCr_Pad_H;		 // í¬ë¡œë§ˆ íŒ¨ë”© ì„¸ë¡œ
+	int Blk_W;			 // ë¸”ë¡ì˜ ê°€ë¡œ í¬ê¸°
+	int Blk_H;			 // ë¸”ë¡ì˜ ì„¸ë¡œ í¬ê¸°
+	int CbCr_Blk_W;		 // í¬ë¡œë§ˆ ë¸”ë¡ì˜ ê°€ë¡œ í¬ê¸°
+	int CbCr_Blk_H;		 // í¬ë¡œë§ˆ ë¸”ë¡ì˜ ì„¸ë¡œ í¬ê¸°
 
 	unsigned char bitstream;
 	int Bitcounter;			// bit counter
@@ -36,47 +36,47 @@ typedef struct _Image_information
 
 typedef struct _Image_Buffer
 {
-	unsigned char* Org_img;     // ¿øº» ¿µ»ó ÀúÀå ¹öÆÛ	
+	unsigned char* Org_img;     // ì›ë³¸ ì˜ìƒ ì €ì¥ ë²„í¼	
 	unsigned char* Cb_img;		// Chroma Blue
 	unsigned char* Cr_img;		// Chroma Red
 
-	unsigned char* Recon_img;   // º¹¿ø ¿µ»ó ÀúÀå ¹öÆÛ 
+	unsigned char* Recon_img;   // ë³µì› ì˜ìƒ ì €ì¥ ë²„í¼ 
 	unsigned char* Cb_Recon_img;
 	unsigned char* Cr_Recon_img;
 
-	unsigned char* ReconForInter_img;   // º¹¿ø ¿µ»ó ÀúÀå ¹öÆÛ 
+	unsigned char* ReconForInter_img;   // ë³µì› ì˜ìƒ ì €ì¥ ë²„í¼ 
 	unsigned char* Cb_ReconForInter_img;   
 	unsigned char* Cr_ReconForInter_img;
 
-	unsigned char* Pad_img;		// ÆĞµù ¿µ»ó ÀúÀå ¹öÆÛ
+	unsigned char* Pad_img;		// íŒ¨ë”© ì˜ìƒ ì €ì¥ ë²„í¼
 	unsigned char* Cb_Pad_img;
 	unsigned char* Cr_Pad_img;
 
-	unsigned char* Cur_blk;     // ¿øº» ºí·Ï ÀúÀå ¹öÆÛ
-	unsigned char* Cb_Cur_blk;     // ¿øº» ºí·Ï ÀúÀå ¹öÆÛ
-	unsigned char* Cr_Cur_blk;     // ¿øº» ºí·Ï ÀúÀå ¹öÆÛ
+	unsigned char* Cur_blk;     // ì›ë³¸ ë¸”ë¡ ì €ì¥ ë²„í¼
+	unsigned char* Cb_Cur_blk;     // ì›ë³¸ ë¸”ë¡ ì €ì¥ ë²„í¼
+	unsigned char* Cr_Cur_blk;     // ì›ë³¸ ë¸”ë¡ ì €ì¥ ë²„í¼
 
-	unsigned char* Recon_blk;     // ¿øº» ºí·Ï ÀúÀå ¹öÆÛ
+	unsigned char* Recon_blk;     // ì›ë³¸ ë¸”ë¡ ì €ì¥ ë²„í¼
 	unsigned char* Cb_Recon_blk;
 	unsigned char* Cr_Recon_blk;
 
-	int* Resi_blk;    // ÀÜÂ÷ ºí·Ï ÀúÀå ¹öÆÛ (ÀÜÂ÷ ºí·Ï = ¿øº» ºí·Ï - ¿¹Ãø ºí·Ï), º¹¿øµÈ ÀÜÂ÷ ºí·Ï ÀúÀå ¹öÆÛ
+	int* Resi_blk;    // ì”ì°¨ ë¸”ë¡ ì €ì¥ ë²„í¼ (ì”ì°¨ ë¸”ë¡ = ì›ë³¸ ë¸”ë¡ - ì˜ˆì¸¡ ë¸”ë¡), ë³µì›ëœ ì”ì°¨ ë¸”ë¡ ì €ì¥ ë²„í¼
 	int* Cb_Resi_blk;
 	int* Cr_Resi_blk;
 
-	double* DCT_blk;     // º¯È¯ ºí·Ï ÀúÀå ¹öÆÛ
+	double* DCT_blk;     // ë³€í™˜ ë¸”ë¡ ì €ì¥ ë²„í¼
 	double* Cb_DCT_blk;   
 	double* Cr_DCT_blk;
 
-	int* Reorder_blk;     // Zig-zag ÀúÀå ¹öÆÛ
+	int* Reorder_blk;     // Zig-zag ì €ì¥ ë²„í¼
 	int* Cb_Reorder_blk;
 	int* Cr_Reorder_blk;
 
-	int* AC_Flag;     // AC_Flag ÀúÀå ¹öÆÛ
+	int* AC_Flag;     // AC_Flag ì €ì¥ ë²„í¼
 	int* Cb_AC_Flag;
 	int* Cr_AC_Flag;
 
-	int* Quant_blk;     // º¯È¯ ºí·Ï ÀúÀå ¹öÆÛ
+	int* Quant_blk;     // ë³€í™˜ ë¸”ë¡ ì €ì¥ ë²„í¼
 	int* Cb_Quant_blk;
 	int* Cr_Quant_blk;
 
@@ -99,7 +99,7 @@ typedef struct _Image_Buffer
 	int* DPCM_mode;
 	int* MPM_flag;
 	int* MPM_resi;
-	int* Best_IntraMode;   // ÃÖÀûÀÇ ¿¹Ãø ¸ğµå ÀúÀå ¹öÆÛ
+	int* Best_IntraMode;   // ìµœì ì˜ ì˜ˆì¸¡ ëª¨ë“œ ì €ì¥ ë²„í¼
 	int* MVx;
 	int* MVy;
 	Info info;
@@ -119,7 +119,7 @@ typedef struct _Pred_Buffer
 
 }Pred_Buf;
 
-void initialization(Img_Buf* img, Pred_Buf* pred); //ÀÔ·Â ¿µ»ó °ü·Ã ÇÔ¼ö
+void initialization(Img_Buf* img, Pred_Buf* pred); //ì…ë ¥ ì˜ìƒ ê´€ë ¨ í•¨ìˆ˜
 
 void Encoder(Img_Buf* img, Pred_Buf* pred, FILE* fp, FILE* pFile, FILE* bs, int frame_mode, int header_Flag);
 void Prediction(Img_Buf* img, Pred_Buf* pred, int Row, int Col);
