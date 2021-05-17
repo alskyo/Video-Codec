@@ -54,7 +54,7 @@ void Encoder(Img_Buf* img, Pred_Buf* pred, FILE* fp, FILE* pFile, FILE* bs, int 
             Quantization(img);                                 //quantblk, include CbCr
             Reordering(img, Blk_Row, Blk_Col);                     //reorder, include CbCr
 
-            // Quant img¿¡ ÀúÀåÇÑ °ÍÀ» ¹ÙÅÁÀ¸·Î ÈÄÃ³¸® -> ENTROPY
+            // Quant imgì— ì €ìž¥í•œ ê²ƒì„ ë°”íƒ•ìœ¼ë¡œ í›„ì²˜ë¦¬ -> ENTROPY
             for (int i = 0; i < img->info.Blk_H; i++)
                 for (int j = 0; j < img->info.Blk_W; j++)
                     img->Quant_img[(i + Blk_Row * img->info.Blk_H) * (img->info.width) + (j + Blk_Col * img->info.Blk_W)]
@@ -125,7 +125,7 @@ void Encoder(Img_Buf* img, Pred_Buf* pred, FILE* fp, FILE* pFile, FILE* bs, int 
             }
         }
     }
-    // D Q ÀÌÈÄÀÇ Ã³¸® À§Ä¡ ---------------------------------------------------------
+    // D Q ì´í›„ì˜ ì²˜ë¦¬ ìœ„ì¹˜ ---------------------------------------------------------
     if (frame_mode == 0)
         make_MPM_flag(img);
     if (img->info.dpcm_flag == 0) {
