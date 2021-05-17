@@ -17,12 +17,12 @@ void Prediction(Img_Buf* img, Pred_Buf* pred, int row, int col) {
 	Src = img->Recon_img;
 	Ref = img->Recon_img + (row * img->info.Blk_H) * img->info.width + col * img->info.Blk_W;
 
-	if (row == 0) // ¿µ»óÀÇ °æ°è
+	if (row == 0) // ì˜ìƒì˜ ê²½ê³„
 	{
 		for (int i = 0; i < img->info.Blk_W; i++)
 			Ref_pix[i] = 128;
 
-		Ref_pix[2 * BKLEN] = 128; //16¹ø
+		Ref_pix[2 * BKLEN] = 128; //16ë²ˆ
 	}
 	else
 	{
@@ -32,12 +32,12 @@ void Prediction(Img_Buf* img, Pred_Buf* pred, int row, int col) {
 		Ref_pix[2 * BKLEN] = Ref[-img->info.width - 1];
 	}
 
-	if (col == 0) //¿µ»óÀÇ °æ°è
+	if (col == 0) //ì˜ìƒì˜ ê²½ê³„
 		for (int i = 0; i < img->info.Blk_H; i++)
 			Ref_pix[BKLEN + i] = 128;
 	else
 		for (int i = 0; i < img->info.Blk_H; i++)
-			Ref_pix[BKLEN + i] = Ref[i * img->info.width - 1];	// ¿©±â °íÃÄº¸´ÂÁß
+			Ref_pix[BKLEN + i] = Ref[i * img->info.width - 1];	// ì—¬ê¸° ê³ ì³ë³´ëŠ”ì¤‘
 
 	// DC --------------------------------------------------------------
 	if (row != 0 && col != 0) {
@@ -57,7 +57,7 @@ void Prediction(Img_Buf* img, Pred_Buf* pred, int row, int col) {
 	}
 	for (int i = 0; i < BKLEN; i++)
 		for (int j = 0; j < BKLEN; j++)
-			pred->Dc[i * img->info.Blk_W + j] = DC_Avr; // DC°ª ÀúÀå
+			pred->Dc[i * img->info.Blk_W + j] = DC_Avr; // DCê°’ ì €ì¥
 	// -----------------------------------------------------------------
 	
 	// Vertical --------------------------------------------------------
@@ -69,7 +69,7 @@ void Prediction(Img_Buf* img, Pred_Buf* pred, int row, int col) {
 	// Horizontal ------------------------------------------------------
 	for (int i = 0; i < BKLEN; i++)
 		for (int j = 0; j < BKLEN; j++)
-			pred->Hor[i * img->info.Blk_W + j] = Ref_pix[BKLEN + i];	// »ìÂ¦ ¾Ö¸Å
+			pred->Hor[i * img->info.Blk_W + j] = Ref_pix[BKLEN + i];	// ì‚´ì§ ì• ë§¤
 	// -----------------------------------------------------------------
 
 	// Sum of Absolute Difference
@@ -81,7 +81,7 @@ void Prediction(Img_Buf* img, Pred_Buf* pred, int row, int col) {
 		}
 	}
 
-	// Sorting ¿À¸§Â÷¼ø
+	// Sorting ì˜¤ë¦„ì°¨ìˆœ
 	Sad_Buf0 = Sad[0];
 	Sad_Buf1 = Sad[1];
 	Sad_Buf2 = Sad[2];
@@ -134,13 +134,13 @@ void CbCr_Prediction(Img_Buf* img, int row, int col) {
 	Cr_Src = img->Cr_Recon_img;
 	Cr_Ref = img->Cr_Recon_img + (row * img->info.CbCr_Blk_H) * img->info.CbCr_width + col * img->info.CbCr_Blk_W;
 
-	if (row == 0) // ¿µ»óÀÇ °æ°è
+	if (row == 0) // ì˜ìƒì˜ ê²½ê³„
 	{
 		for (int i = 0; i < img->info.CbCr_Blk_W; i++) {
 			Cb_Ref_pix[i] = 128;		// 0 ~ 7
 			Cr_Ref_pix[i] = 128;
 		}
-		Cb_Ref_pix[2 * CbCr_BKLEN] = 128; //8¹ø
+		Cb_Ref_pix[2 * CbCr_BKLEN] = 128; //8ë²ˆ
 		Cr_Ref_pix[2 * CbCr_BKLEN] = 128;
 	}
 	else
@@ -152,7 +152,7 @@ void CbCr_Prediction(Img_Buf* img, int row, int col) {
 		Cb_Ref_pix[2 * CbCr_BKLEN] = Cb_Ref[-img->info.CbCr_width - 1];
 		Cr_Ref_pix[2 * CbCr_BKLEN] = Cr_Ref[-img->info.CbCr_width - 1];
 	}
-	if (col == 0) //¿µ»óÀÇ °æ°è
+	if (col == 0) //ì˜ìƒì˜ ê²½ê³„
 		for (int i = 0; i < img->info.CbCr_Blk_H; i++) {
 			Cb_Ref_pix[CbCr_BKLEN + i] = 128;
 			Cr_Ref_pix[CbCr_BKLEN + i] = 128;
@@ -208,7 +208,7 @@ void CbCr_Prediction(Img_Buf* img, int row, int col) {
 				Cr_Best[i * img->info.CbCr_Blk_W + j] = Cr_Ref_pix[CbCr_BKLEN + i];
 			}
 	}
-	// Residual ÀúÀå
+	// Residual ì €ì¥
 	for (int i = 0; i < img->info.CbCr_Blk_H; i++) {
 		for (int j = 0; j < img->info.CbCr_Blk_W; j++) {
 			img->Cb_Resi_blk[i * img->info.CbCr_Blk_W + j] 
