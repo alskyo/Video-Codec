@@ -1,8 +1,8 @@
 #include "buffer.h"
 
-// Inter Prediction À» À§ÇÑ ÆĞµù
+// Inter Prediction ì„ ìœ„í•œ íŒ¨ë”©
 void Padding(Img_Buf* img) {
-	//¿øº» ¿µ»óÀ» ÆĞµù ¿µ»ó¿¡ ÀúÀå
+	//ì›ë³¸ ì˜ìƒì„ íŒ¨ë”© ì˜ìƒì— ì €ì¥
 	for (int i = 0; i < img->info.height; i++)
 		for (int j = 0; j < img->info.width; j++)
 			img->Pad_img[(PADLEN + i) * img->info.Pad_W + j + PADLEN] = img->ReconForInter_img[i * img->info.width + j];
