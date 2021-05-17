@@ -32,7 +32,7 @@ void main(int argc, char *argv[]) {
 		if (currFrame == (FRAME - 1))
 			header_Flag = 2;
 
-		Encoder(&img, &pred, fp, pFile, bs, frame_mode, header_Flag);						// га╥╧юс╦П╣Е Ёж╬Н╬ъгр╣М
+		Encoder(&img, &pred, fp, pFile, bs, frame_mode, header_Flag);						// ц┤ц│б╥б╧ц─ц⌠б╦ц╟б╣ц╔ бЁц√б╬ц╝б╬ц÷ц┤ц▓б╣ц╜
 		header_Flag = 0;
 
 
