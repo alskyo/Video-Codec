@@ -10,7 +10,7 @@ void initialization(Img_Buf* img, Pred_Buf* pred) {
 	img->info.Bitcounter = 8;
 	img->info.bitstream = 0;
 	
-	//img->Best_IntraMode = 0;		// CbCr¿¡¼­µµ °øÅëÀ¸·Î »ç¿ë
+	//img->Best_IntraMode = 0;		// CbCrÂ¿Â¡Â¼Â­ÂµÂµ Â°Ã¸Ã…Ã«Ã€Â¸Â·ÃŽ Â»Ã§Â¿Ã«
 
 	img->info.width = WIDTH;
 	img->info.height = HEIGHT;
