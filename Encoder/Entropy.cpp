@@ -2,7 +2,7 @@
 
 void Byte_Writer(Img_Buf* img, FILE* bs, unsigned char uc_temp, int bit_element) {
 	unsigned char buffer; 
-	// bit_element ´Â Max 8
+	// bit_element ëŠ” Max 8
 	for (int i = bit_element; i > 0; i--) {
 		buffer = uc_temp;
 		buffer = buffer & (unsigned char)pow(2, i - 1);
@@ -182,16 +182,16 @@ void Entropy(Img_Buf* img, FILE* bs, int header_Flag, int frame_mode) {
 				if (Blk_Row == 0 && Blk_Col == 0) {
 					if (img->info.intra_flag == 1) {
 						uc_temp = 0;
-						Byte_Writer(img, bs, uc_temp, 1);	// °ª, ºñÆ® ¼ö		// MPM flag (0,0)¿¹¿ÜÃ³¸®
-						uc_temp = img->MPM_resi[0];			// 0·Î ÃßÁ¤
-						Byte_Writer(img, bs, uc_temp, 1);	// °ª, ºñÆ® ¼ö		// MPM resi (0,0)¿¹¿ÜÃ³¸®
+						Byte_Writer(img, bs, uc_temp, 1);	// ê°’, ë¹„íŠ¸ ìˆ˜		// MPM flag (0,0)ì˜ˆì™¸ì²˜ë¦¬
+						uc_temp = img->MPM_resi[0];			// 0ë¡œ ì¶”ì •
+						Byte_Writer(img, bs, uc_temp, 1);	// ê°’, ë¹„íŠ¸ ìˆ˜		// MPM resi (0,0)ì˜ˆì™¸ì²˜ë¦¬
 					}
 				}
 				else {
 					if (img->info.intra_flag == 1) {
 						uc_temp = img->MPM_flag[Blk_Row * (img->info.width / img->info.Blk_W) + Blk_Col];	// 0 : origin, 1 : resi
 						Byte_Writer(img, bs, uc_temp, 1);
-						// MPM_Flag°¡ 1ÀÌ¸é resi °ª ³Ö±â
+						// MPM_Flagê°€ 1ì´ë©´ resi ê°’ ë„£ê¸°
 						if (uc_temp == 1) {
 							uc_temp = img->MPM_resi[Blk_Row * (img->info.width / img->info.Blk_W) + Blk_Col];
 							Byte_Writer(img, bs, uc_temp, 1);
@@ -202,7 +202,7 @@ void Entropy(Img_Buf* img, FILE* bs, int header_Flag, int frame_mode) {
 			else {
 				//Inter Prediction
 				if (Blk_Row == 0 && Blk_Col == 0) {
-					uc_temp = 1;			// MV modeflag 8by8 -> 1  ÀÌ°Å ÇÑ¹ø È®ÀÎÇØºÁ¾ßÇÒµí 4by4
+					uc_temp = 1;			// MV modeflag 8by8 -> 1  ì´ê±° í•œë²ˆ í™•ì¸í•´ë´ì•¼í• ë“¯ 4by4
 					Byte_Writer(img, bs, uc_temp, 1);
 				}
 				value = img->MVx[Blk_Row * (img->info.width / img->info.Blk_W) + Blk_Col];
@@ -226,7 +226,7 @@ void Entropy(Img_Buf* img, FILE* bs, int header_Flag, int frame_mode) {
 					}
 				}
 			}
-			// AC_Flag °¡ 1ÀÌ¸é ACs´Â pass
+			// AC_Flag ê°€ 1ì´ë©´ ACsëŠ” pass
 		}
 	}
 	// Chroma Blue ************************************************************************************************************
@@ -249,7 +249,7 @@ void Entropy(Img_Buf* img, FILE* bs, int header_Flag, int frame_mode) {
 					}
 				}
 			}
-			// AC_Flag °¡ 1ÀÌ¸é ACs´Â pass
+			// AC_Flag ê°€ 1ì´ë©´ ACsëŠ” pass
 		}
 	}
 	// Chroma Red ************************************************************************************************************
@@ -272,7 +272,7 @@ void Entropy(Img_Buf* img, FILE* bs, int header_Flag, int frame_mode) {
 					}
 				}
 			}
-			// AC_Flag °¡ 1ÀÌ¸é ACs´Â pass
+			// AC_Flag ê°€ 1ì´ë©´ ACsëŠ” pass
 		}
 	}
 	if ((header_Flag == 2) && (img->info.Bitcounter != 8)) {
